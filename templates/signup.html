@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign Up - Student Life OS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="auth-page">
+    <div class="auth-card">
+        <div class="header-banner auth-banner">
+            <h1>✨ Create Your Account</h1>
+            <p>Join the Student Life OS community and start organizing your success</p>
+        </div>
+
+        <form method="POST">
+            <h2 class="auth-title text-center">Get Started Today</h2>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="📝 Full Name"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                placeholder="📧 Email Address"
+                required>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="🔒 Password"
+                required>
+
+            <button type="submit" class="btn btn-wide mt-10">
+                ✨ Create Account
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Already have an account? <a href="/login">Login here</a>
+        </p>
+    </div>
+</body>
+
+</html>

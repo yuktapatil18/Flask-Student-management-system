@@ -1,0 +1,239 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        📈 Analytics Dashboard
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Visualize your overall study progress
+    </p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+
+    <div class="bg-blue-100 rounded-xl shadow p-6">
+
+        <p class="text-gray-600">
+            🎯 Total DSA
+        </p>
+
+        <h2 class="text-4xl font-bold text-blue-700 mt-2">
+            {{ total_dsa }}
+        </h2>
+
+    </div>
+
+    <div class="bg-purple-100 rounded-xl shadow p-6">
+
+        <p class="text-gray-600">
+            💾 Total SQL
+        </p>
+
+        <h2 class="text-4xl font-bold text-purple-700 mt-2">
+            {{ total_sql }}
+        </h2>
+
+    </div>
+
+    <div class="bg-yellow-100 rounded-xl shadow p-6">
+
+        <p class="text-gray-600">
+            ☕ Total Java
+        </p>
+
+        <h2 class="text-4xl font-bold text-yellow-700 mt-2">
+            {{ total_java }}
+        </h2>
+
+    </div>
+
+    <div class="bg-green-100 rounded-xl shadow p-6">
+
+        <p class="text-gray-600">
+            💼 Total Projects
+        </p>
+
+        <h2 class="text-4xl font-bold text-green-700 mt-2">
+            {{ total_projects }}
+        </h2>
+
+    </div>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-6">
+        📊 Topic Distribution
+    </h2>
+
+    <div class="space-y-6">
+
+        <div>
+
+            <div class="flex justify-between mb-2">
+
+                <span class="font-medium">
+                    🎯 DSA
+                </span>
+
+                <span>
+                    {{ dsa_percent }}%
+                </span>
+
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4">
+
+                <div
+                    class="bg-blue-500 h-4 rounded-full"
+                    style="width: {{ dsa_percent }}%">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="flex justify-between mb-2">
+
+                <span class="font-medium">
+                    💾 SQL
+                </span>
+
+                <span>
+                    {{ sql_percent }}%
+                </span>
+
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4">
+
+                <div
+                    class="bg-purple-500 h-4 rounded-full"
+                    style="width: {{ sql_percent }}%">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="flex justify-between mb-2">
+
+                <span class="font-medium">
+                    ☕ Java
+                </span>
+
+                <span>
+                    {{ java_percent }}%
+                </span>
+
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4">
+
+                <div
+                    class="bg-yellow-500 h-4 rounded-full"
+                    style="width: {{ java_percent }}%">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="flex justify-between mb-2">
+
+                <span class="font-medium">
+                    💼 Projects
+                </span>
+
+                <span>
+                    {{ project_percent }}%
+                </span>
+
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full h-4">
+
+                <div
+                    class="bg-green-500 h-4 rounded-full"
+                    style="width: {{ project_percent }}%">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <h2 class="text-xl font-bold mb-4">
+            📚 Learning Summary
+        </h2>
+
+        <ul class="space-y-3">
+
+            <li>
+                🎯 DSA Questions Solved:
+                <strong>{{ total_dsa }}</strong>
+            </li>
+
+            <li>
+                💾 SQL Questions Solved:
+                <strong>{{ total_sql }}</strong>
+            </li>
+
+            <li>
+                ☕ Java Topics Covered:
+                <strong>{{ total_java }}</strong>
+            </li>
+
+            <li>
+                💼 Project Sessions:
+                <strong>{{ total_projects }}</strong>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <h2 class="text-xl font-bold mb-4">
+            🚀 Productivity Insight
+        </h2>
+
+        <p class="text-gray-700">
+
+            Your study distribution shows how your effort
+            is spread across DSA, SQL, Java and Projects.
+
+        </p>
+
+        <p class="mt-4 text-gray-700">
+
+            Keep maintaining balance while focusing on
+            placement preparation.
+
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,259 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        😊 Mood Tracker
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Monitor your mental well-being during your preparation journey
+    </p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        🌟 How are you feeling today?
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+
+            <label class="border rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50">
+
+                <input
+                    type="radio"
+                    name="mood"
+                    value="excellent"
+                    required>
+
+                <div class="text-4xl mt-2">
+                    😄
+                </div>
+
+                <div class="mt-2">
+                    Excellent
+                </div>
+
+            </label>
+
+            <label class="border rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50">
+
+                <input
+                    type="radio"
+                    name="mood"
+                    value="good">
+
+                <div class="text-4xl mt-2">
+                    😊
+                </div>
+
+                <div class="mt-2">
+                    Good
+                </div>
+
+            </label>
+
+            <label class="border rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50">
+
+                <input
+                    type="radio"
+                    name="mood"
+                    value="neutral">
+
+                <div class="text-4xl mt-2">
+                    😐
+                </div>
+
+                <div class="mt-2">
+                    Neutral
+                </div>
+
+            </label>
+
+            <label class="border rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50">
+
+                <input
+                    type="radio"
+                    name="mood"
+                    value="sad">
+
+                <div class="text-4xl mt-2">
+                    😕
+                </div>
+
+                <div class="mt-2">
+                    Sad
+                </div>
+
+            </label>
+
+            <label class="border rounded-xl p-4 text-center cursor-pointer hover:bg-gray-50">
+
+                <input
+                    type="radio"
+                    name="mood"
+                    value="stressed">
+
+                <div class="text-4xl mt-2">
+                    😰
+                </div>
+
+                <div class="mt-2">
+                    Stressed
+                </div>
+
+            </label>
+
+        </div>
+
+        <div class="mb-4">
+
+            <label class="block mb-2 font-medium">
+                💭 What's on your mind?
+            </label>
+
+            <textarea
+                name="notes"
+                rows="4"
+                placeholder="Share your thoughts..."
+                class="w-full border rounded-lg p-3"></textarea>
+
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div>
+
+                <label class="block mb-2">
+                    😴 Sleep Quality
+                </label>
+
+                <select
+                    name="sleep"
+                    required
+                    class="w-full border rounded-lg p-3">
+
+                    <option>Poor</option>
+                    <option>Fair</option>
+                    <option>Good</option>
+                    <option>Excellent</option>
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <label class="block mb-2">
+                    🍽️ Diet Quality
+                </label>
+
+                <select
+                    name="diet"
+                    required
+                    class="w-full border rounded-lg p-3">
+
+                    <option>Poor</option>
+                    <option>Fair</option>
+                    <option>Good</option>
+                    <option>Excellent</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg">
+
+            💾 Save Mood Entry
+
+        </button>
+
+    </form>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📈 Recent Mood Entries
+    </h2>
+
+    {% if moods %}
+
+        <div class="space-y-4">
+
+            {% for mood in moods %}
+
+            <div class="border rounded-xl p-4">
+
+                <div class="flex justify-between">
+
+                    <div>
+
+                        <h3 class="font-bold text-lg">
+                            {{ mood[1] | capitalize }}
+                        </h3>
+
+                        <p class="text-gray-600">
+
+                            Sleep: {{ mood[3] }}
+                            •
+                            Diet: {{ mood[4] }}
+
+                        </p>
+
+                    </div>
+
+                    <div class="text-gray-500">
+
+                        {{ mood[5] }}
+
+                    </div>
+
+                </div>
+
+                {% if mood[2] %}
+
+                <p class="mt-3 text-gray-700">
+
+                    {{ mood[2] }}
+
+                </p>
+
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="text-center py-10">
+
+            <h3 class="text-xl font-semibold text-gray-600">
+                No mood entries yet
+            </h3>
+
+            <p class="text-gray-500 mt-2">
+                Log your mood and reflect on your journey 💙
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

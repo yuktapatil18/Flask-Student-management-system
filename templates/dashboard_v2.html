@@ -1,0 +1,314 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        👋 Welcome {{ user_name }}
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Keep pushing forward with your placement prep
+    </p>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <p class="text-gray-500">
+            📅 Today's Date
+        </p>
+
+        <h2 class="text-2xl font-bold text-blue-600 mt-2">
+            {{ current_date }}
+        </h2>
+
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <p class="text-gray-500">
+            🔥 Current Streak
+        </p>
+
+        <h2 class="text-2xl font-bold text-purple-600 mt-2">
+            {{ streak_count }} Days
+        </h2>
+
+    </div>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        🎯 Today's Focus
+    </h2>
+
+    <ul class="space-y-2">
+
+        <li>📚 Complete DSA Sheet</li>
+
+        <li>💻 Work on Student Life OS</li>
+
+        <li>📖 SQL Revision</li>
+
+        <li>🏃 Exercise 30 Minutes</li>
+
+    </ul>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        ➕ Add Today's Task
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <input
+                type="text"
+                name="task_name"
+                placeholder="What's your task today?"
+                required
+                class="border rounded-lg p-3">
+
+            <select
+                name="category"
+                class="border rounded-lg p-3">
+
+                <option>DSA</option>
+                <option>SQL</option>
+                <option>Java</option>
+                <option>Projects</option>
+                <option>Aptitude</option>
+                <option>Exercise</option>
+                <option>Reading</option>
+                <option>Meditation</option>
+
+            </select>
+
+            <button
+                type="submit"
+                class="bg-blue-600 text-white rounded-lg p-3">
+
+                Add Task ✓
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+
+    <div class="bg-white rounded-xl shadow p-6">
+
+        <p>Total Tasks</p>
+
+        <h2 class="text-3xl font-bold">
+            {{ total_tasks }}
+        </h2>
+
+    </div>
+
+    <div class="bg-green-100 rounded-xl shadow p-6">
+
+        <p>Completed</p>
+
+        <h2 class="text-3xl font-bold">
+            {{ completed_tasks }}
+        </h2>
+
+    </div>
+
+    <div class="bg-yellow-100 rounded-xl shadow p-6">
+
+        <p>Pending</p>
+
+        <h2 class="text-3xl font-bold">
+            {{ pending_tasks }}
+        </h2>
+
+    </div>
+
+    <div class="bg-blue-100 rounded-xl shadow p-6">
+
+        <p>Completion Rate</p>
+
+        <h2 class="text-3xl font-bold">
+            {{ completion_rate }}%
+        </h2>
+
+    </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+
+    <a href="/placement_v2"
+       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+
+        <h3 class="font-bold text-lg">
+            🏆 Placement Tracker
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Track jobs and interviews
+        </p>
+
+    </a>
+
+    <a href="/habit_v2"
+       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+
+        <h3 class="font-bold text-lg">
+            ✨ Habit Tracker
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Build consistency
+        </p>
+
+    </a>
+        <a href="/fitness_v2"
+       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+
+        <h3 class="font-bold text-lg">
+            💪 Fitness Tracker
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Track health goals
+        </p>
+
+    </a>
+
+    <a href="/mood_v2"
+       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+
+        <h3 class="font-bold text-lg">
+            😊 Mood Tracker
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Monitor mental wellbeing
+        </p>
+
+    </a>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📋 Today's Tasks
+    </h2>
+
+    {% if tasks %}
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+            <thead>
+
+                <tr class="border-b">
+
+                    <th class="text-left p-3">ID</th>
+                    <th class="text-left p-3">Task</th>
+                    <th class="text-left p-3">Category</th>
+                    <th class="text-left p-3">Status</th>
+                    <th class="text-left p-3">Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for task in tasks %}
+
+                <tr class="border-b">
+
+                    <td class="p-3">
+                        #{{ task[0] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ task[1] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ task[2] }}
+                    </td>
+
+                    <td class="p-3">
+
+                        {% if task[3] == "Completed" %}
+
+                        <span class="text-green-600 font-semibold">
+                            ✓ Completed
+                        </span>
+
+                        {% else %}
+
+                        <span class="text-yellow-600 font-semibold">
+                            ⏳ Pending
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td class="p-3">
+
+                        <a
+                            href="/complete/{{ task[0] }}"
+                            class="text-green-600 font-semibold">
+
+                            Complete
+
+                        </a>
+
+                        |
+
+                        <a
+                            href="/delete_task/{{ task[0] }}"
+                            class="text-red-600 font-semibold">
+
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <p class="text-gray-500">
+        No tasks yet. Add one to get started 🚀
+    </p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

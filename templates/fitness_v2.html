@@ -1,0 +1,179 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        💪 Fitness Tracker
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Stay healthy and track your workouts
+    </p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        🏋️ Log Workout
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <input
+                type="text"
+                name="exercise_type"
+                placeholder="Exercise Type"
+                required
+                class="border rounded-lg p-3">
+
+            <input
+                type="number"
+                name="duration"
+                placeholder="Duration (minutes)"
+                required
+                class="border rounded-lg p-3">
+
+            <input
+                type="number"
+                name="calories"
+                placeholder="Calories Burned"
+                required
+                class="border rounded-lg p-3">
+
+            <select
+                name="intensity"
+                required
+                class="border rounded-lg p-3">
+
+                <option>Low</option>
+                <option>Moderate</option>
+                <option>High</option>
+                <option>Extreme</option>
+
+            </select>
+
+            <textarea
+                name="notes"
+                rows="4"
+                placeholder="Workout Notes"
+                class="border rounded-lg p-3 md:col-span-2"></textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg">
+
+            💾 Save Workout
+
+        </button>
+
+    </form>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📋 Workout History
+    </h2>
+
+    {% if workouts %}
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+            <thead>
+
+                <tr class="bg-gray-100 border-b">
+
+                    <th class="p-3 text-left">Exercise</th>
+                    <th class="p-3 text-left">Duration</th>
+                    <th class="p-3 text-left">Calories</th>
+                    <th class="p-3 text-left">Intensity</th>
+                    <th class="p-3 text-left">Notes</th>
+                    <th class="p-3 text-left">Date</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for workout in workouts %}
+
+                <tr class="border-b hover:bg-gray-50">
+
+                    <td class="p-3">
+                        {{ workout[1] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ workout[2] }} min
+                    </td>
+
+                    <td class="p-3">
+                        {{ workout[3] }}
+                    </td>
+
+                    <td class="p-3">
+
+                        {% if workout[4] == "High" or workout[4] == "Extreme" %}
+
+                        <span class="text-red-600 font-semibold">
+                            {{ workout[4] }}
+                        </span>
+
+                        {% else %}
+
+                        <span class="text-green-600 font-semibold">
+                            {{ workout[4] }}
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td class="p-3">
+                        {{ workout[5] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ workout[6] }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="text-center py-10">
+
+        <h3 class="text-xl font-semibold text-gray-600">
+            No workout records yet
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Start tracking your fitness journey 💪
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

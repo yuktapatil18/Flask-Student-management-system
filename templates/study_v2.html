@@ -1,0 +1,183 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        📖 Study Tracker
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Log your daily study progress across all topics
+    </p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📝 Log Today's Study
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div>
+                <label class="block mb-2 font-medium">
+                    🎯 DSA Questions
+                </label>
+
+                <input
+                    type="number"
+                    name="dsa"
+                    value="0"
+                    class="w-full border rounded-lg p-3">
+            </div>
+
+            <div>
+                <label class="block mb-2 font-medium">
+                    💾 SQL Questions
+                </label>
+
+                <input
+                    type="number"
+                    name="sql"
+                    value="0"
+                    class="w-full border rounded-lg p-3">
+            </div>
+
+            <div>
+                <label class="block mb-2 font-medium">
+                    ☕ Java Topics
+                </label>
+
+                <input
+                    type="number"
+                    name="java"
+                    value="0"
+                    class="w-full border rounded-lg p-3">
+            </div>
+
+            <div>
+                <label class="block mb-2 font-medium">
+                    💼 Projects Worked
+                </label>
+
+                <input
+                    type="number"
+                    name="project"
+                    value="0"
+                    class="w-full border rounded-lg p-3">
+            </div>
+
+        </div>
+
+        <button
+            type="submit"
+            class="mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+
+            💾 Save Today's Progress
+
+        </button>
+
+    </form>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📅 Study History
+    </h2>
+
+    {% if records %}
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+            <thead>
+
+                <tr class="border-b bg-gray-50">
+
+                    <th class="p-3 text-left">
+                        📅 Date
+                    </th>
+
+                    <th class="p-3 text-left">
+                        🎯 DSA
+                    </th>
+
+                    <th class="p-3 text-left">
+                        💾 SQL
+                    </th>
+
+                    <th class="p-3 text-left">
+                        ☕ Java
+                    </th>
+
+                    <th class="p-3 text-left">
+                        💼 Projects
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for row in records %}
+
+                <tr class="border-b hover:bg-gray-50">
+
+                    <td class="p-3 font-semibold">
+                        {{ row[5] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ row[1] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ row[2] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ row[3] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ row[4] }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="text-center py-8">
+
+        <p class="text-xl font-semibold text-gray-600">
+            No study records yet.
+        </p>
+
+        <p class="text-gray-500 mt-2">
+            Start logging your daily progress.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

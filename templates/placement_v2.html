@@ -1,0 +1,156 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        🏆 Placement Tracker
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Track your job applications and interview progress
+    </p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📋 Add Company Application
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                required
+                class="border rounded-lg p-3">
+
+            <input
+                type="text"
+                name="position"
+                placeholder="Position Applied For"
+                required
+                class="border rounded-lg p-3">
+
+            <select
+                name="status"
+                required
+                class="border rounded-lg p-3">
+
+                <option>Applied</option>
+                <option>Under Review</option>
+                <option>Interview Round 1</option>
+                <option>Interview Round 2</option>
+                <option>Interview Round 3</option>
+                <option>Offer</option>
+                <option>Rejected</option>
+
+            </select>
+
+            <input
+                type="date"
+                name="app_date"
+                required
+                class="border rounded-lg p-3">
+
+        </div>
+
+        <button
+            type="submit"
+            class="mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg">
+
+            📝 Add Application
+
+        </button>
+
+    </form>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📊 Application History
+    </h2>
+
+    {% if placements %}
+
+    <div class="overflow-x-auto">
+
+        <table class="w-full">
+
+            <thead>
+
+                <tr class="bg-gray-100 border-b">
+
+                    <th class="p-3 text-left">Company</th>
+                    <th class="p-3 text-left">Position</th>
+                    <th class="p-3 text-left">Status</th>
+                    <th class="p-3 text-left">Interview Date</th>
+                    <th class="p-3 text-left">Added On</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for placement in placements %}
+
+                <tr class="border-b hover:bg-gray-50">
+
+                    <td class="p-3">
+                        {{ placement[1] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ placement[2] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ placement[3] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ placement[4] }}
+                    </td>
+
+                    <td class="p-3">
+                        {{ placement[5] }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="text-center py-8">
+
+        <p class="text-xl font-semibold text-gray-600">
+            🚀 Your placement tracker is empty.
+        </p>
+
+        <p class="text-gray-500 mt-2">
+            Add application entries and review them here.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

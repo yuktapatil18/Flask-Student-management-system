@@ -1,0 +1,137 @@
+{% extends "base_v2.html" %}
+
+{% block content %}
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h1 class="text-3xl font-bold">
+        ✨ Habit Tracker
+    </h1>
+
+    <p class="text-gray-500 mt-2">
+        Build positive habits and track your consistency
+    </p>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6 mb-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        ➕ Create New Habit
+    </h2>
+
+    <form method="POST">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <input
+                type="text"
+                name="habit_name"
+                placeholder="Habit Name"
+                required
+                class="border rounded-lg p-3">
+
+            <select
+                name="frequency"
+                required
+                class="border rounded-lg p-3">
+
+                <option value="Daily">
+                    Daily
+                </option>
+
+                <option value="Weekly">
+                    Weekly
+                </option>
+
+                <option value="Monthly">
+                    Monthly
+                </option>
+
+            </select>
+
+            <textarea
+                name="description"
+                placeholder="Description of the habit"
+                rows="4"
+                class="border rounded-lg p-3 md:col-span-2"></textarea>
+
+        </div>
+
+        <button
+            type="submit"
+            class="mt-5 bg-blue-600 text-white px-6 py-3 rounded-lg">
+
+            ✅ Create Habit
+
+        </button>
+
+    </form>
+
+</div>
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-4">
+        📈 Your Habits
+    </h2>
+
+    {% if habits %}
+
+    <div class="grid gap-4">
+
+        {% for habit in habits %}
+
+        <div class="border rounded-xl p-5 hover:bg-gray-50">
+
+            <div class="flex justify-between items-start">
+
+                <div>
+
+                    <h3 class="text-xl font-bold">
+                        ✨ {{ habit[1] }}
+                    </h3>
+
+                    <p class="text-blue-600 mt-1">
+                        {{ habit[2] }}
+                    </p>
+
+                    <p class="text-gray-600 mt-2">
+                        {{ habit[3] }}
+                    </p>
+
+                </div>
+
+                <div class="text-sm text-gray-500">
+
+                    {{ habit[4] }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="text-center py-10">
+
+        <h3 class="text-xl font-semibold text-gray-600">
+            No habits added yet
+        </h3>
+
+        <p class="text-gray-500 mt-2">
+            Start building habits that lead to success 🚀
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
