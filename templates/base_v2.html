@@ -1,105 +1,607 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Student Life OS</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    boxShadow: {
+
+                        soft: "0 4px 20px rgba(15, 23, 42, 0.06)",
+
+                    },
+
+                    animation: {
+
+                        fade: "fade 0.4s ease-out",
+
+                    },
+
+                    keyframes: {
+
+                        fade: {
+
+                            "0%": {
+                                opacity: "0",
+                                transform: "translateY(8px)"
+                            },
+
+                            "100%": {
+                                opacity: "1",
+                                transform: "translateY(0)"
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
 </head>
 
-<body class="bg-gray-100">
+
+<body class="bg-slate-100 text-slate-900">
+
 
 <div class="flex min-h-screen">
 
-    <!-- Sidebar -->
 
-    <div class="w-64 bg-white shadow-lg">
+    <!-- ================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================================= -->
 
-        <div class="p-6">
+    <aside
+        class="fixed
+               inset-y-0
+               left-0
+               z-40
+               w-64
+               bg-white
+               border-r
+               border-slate-200
+               flex
+               flex-col
+               shadow-soft">
 
-            <h1 class="text-2xl font-bold">
 
-                📚 Student Life OS
+        <!-- LOGO -->
 
-            </h1>
+        <div class="px-6 py-6 border-b border-slate-100">
+
+            <a href="/dashboard_v2"
+               class="flex items-center gap-3">
+
+                <div
+                    class="w-11
+                           h-11
+                           rounded-xl
+                           bg-gradient-to-br
+                           from-blue-500
+                           to-indigo-600
+                           flex
+                           items-center
+                           justify-center
+                           text-2xl
+                           shadow-md">
+
+                    📚
+
+                </div>
+
+
+                <div>
+
+                    <h1 class="text-lg font-bold text-slate-900">
+                        Student Life
+                    </h1>
+
+                    <p class="text-lg font-bold text-indigo-600">
+                        OS
+                    </p>
+
+                </div>
+
+            </a>
 
         </div>
 
-        <nav class="mt-6">
 
-            <a href="/dashboard_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
 
-                📊 Dashboard
+        <!-- NAVIGATION -->
+
+        <nav class="flex-1 px-4 py-6">
+
+
+            <p
+                class="px-3
+                       mb-3
+                       text-xs
+                       font-semibold
+                       uppercase
+                       tracking-wider
+                       text-slate-400">
+
+                Main Menu
+
+            </p>
+
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="/dashboard_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-blue-50
+                           group-hover:bg-blue-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    📊
+
+                </span>
+
+                <span class="font-medium">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- STUDY -->
+
+            <a
+                href="/study_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-indigo-50
+                           group-hover:bg-indigo-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    📖
+
+                </span>
+
+                <span class="font-medium">
+                    Study
+                </span>
 
             </a>
 
-            <a href="/study_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
 
-                📖 Study
 
-            </a>
+            <!-- PLACEMENT -->
 
-            <a href="/placement_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
+            <a
+                href="/placement_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
 
-                🏆 Placement
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-yellow-50
+                           group-hover:bg-yellow-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
 
-            </a>
+                    🏆
 
-            <a href="/habit_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
+                </span>
 
-                ✨ Habit
-
-            </a>
-
-            <a href="/fitness_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
-
-                💪 Fitness
-
-            </a>
-
-            <a href="/mood_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
-
-                😊 Mood
-
-            </a>
-
-            <a href="/analytics_v2"
-               class="block px-6 py-3 hover:bg-gray-100">
-
-                📈 Analytics
+                <span class="font-medium">
+                    Placement
+                </span>
 
             </a>
 
-            <a href="/logout"
-               class="block px-6 py-3 text-red-600 hover:bg-red-50">
 
-                🚪 Logout
+
+            <!-- HABIT -->
+
+            <a
+                href="/habit_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-purple-50
+                           group-hover:bg-purple-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    ✨
+
+                </span>
+
+                <span class="font-medium">
+                    Habit
+                </span>
 
             </a>
+
+
+
+            <!-- FITNESS -->
+
+            <a
+                href="/fitness_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-green-50
+                           group-hover:bg-green-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    💪
+
+                </span>
+
+                <span class="font-medium">
+                    Fitness
+                </span>
+
+            </a>
+
+
+
+            <!-- MOOD -->
+
+            <a
+                href="/mood_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-pink-50
+                           group-hover:bg-pink-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    😊
+
+                </span>
+
+                <span class="font-medium">
+                    Mood
+                </span>
+
+            </a>
+
+
+
+            <!-- ANALYTICS -->
+
+            <a
+                href="/analytics_v2"
+                class="group flex items-center gap-3
+                       px-3 py-3
+                       mb-1
+                       rounded-xl
+                       text-slate-700
+                       hover:bg-blue-50
+                       hover:text-blue-600
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-orange-50
+                           group-hover:bg-orange-100
+                           flex
+                           items-center
+                           justify-center
+                           text-lg">
+
+                    📈
+
+                </span>
+
+                <span class="font-medium">
+                    Analytics
+                </span>
+
+            </a>
+
 
         </nav>
 
-    </div>
 
-    <!-- Main Content -->
 
-    <div class="flex-1 p-8">
+        <!-- BOTTOM SECTION -->
 
-        {% block content %}
+        <div class="px-4 pb-5">
 
-        {% endblock %}
 
-    </div>
+            <!-- Small profile card -->
+
+            <div
+                class="p-4
+                       mb-3
+                       rounded-2xl
+                       bg-slate-50
+                       border
+                       border-slate-100">
+
+
+                <div class="flex items-center gap-3">
+
+
+                    <div
+                        class="w-10
+                               h-10
+                               rounded-full
+                               bg-gradient-to-br
+                               from-blue-500
+                               to-indigo-600
+                               text-white
+                               flex
+                               items-center
+                               justify-center
+                               font-bold">
+
+                        {{ user_name[0]|upper if user_name else "U" }}
+
+                    </div>
+
+
+                    <div class="min-w-0">
+
+                        <p class="font-semibold text-sm truncate">
+
+                            {{ user_name if user_name else "Student" }}
+
+                        </p>
+
+                        <p class="text-xs text-slate-400">
+
+                            Student
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="/logout"
+                class="flex items-center gap-3
+                       px-3 py-3
+                       rounded-xl
+                       text-red-500
+                       hover:bg-red-50
+                       transition">
+
+                <span
+                    class="w-9 h-9
+                           rounded-lg
+                           bg-red-50
+                           flex
+                           items-center
+                           justify-center">
+
+                    🚪
+
+                </span>
+
+                <span class="font-medium">
+                    Logout
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================================================= -->
+    <!-- MAIN AREA -->
+    <!-- ================================================= -->
+
+    <main
+        class="ml-64
+               flex-1
+               min-h-screen">
+
+
+        <!-- TOP BAR -->
+
+        <header
+            class="sticky
+                   top-0
+                   z-30
+                   h-16
+                   bg-white/90
+                   backdrop-blur
+                   border-b
+                   border-slate-200">
+
+
+            <div
+                class="h-full
+                       px-8
+                       flex
+                       items-center
+                       justify-between">
+
+
+                <div>
+
+                    <p class="text-sm text-slate-400">
+                        Student Dashboard
+                    </p>
+
+                    <p class="font-semibold text-slate-800">
+                        Manage your progress
+                    </p>
+
+                </div>
+
+
+                <div class="flex items-center gap-3">
+
+
+                    <div
+                        class="hidden md:flex
+                               items-center
+                               gap-2
+                               px-4 py-2
+                               rounded-xl
+                               bg-slate-50
+                               border
+                               border-slate-100">
+
+                        <span>
+                            🔥
+                        </span>
+
+                        <span class="text-sm font-medium text-slate-600">
+
+                            Stay consistent
+
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="w-10
+                               h-10
+                               rounded-full
+                               bg-indigo-100
+                               text-indigo-600
+                               flex
+                               items-center
+                               justify-center
+                               font-bold">
+
+                        {{ user_name[0]|upper if user_name else "U" }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PAGE CONTENT -->
+
+        <div
+            class="p-6 md:p-8
+                   animate-fade">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+
+    </main>
+
 
 </div>
+
 
 </body>
 

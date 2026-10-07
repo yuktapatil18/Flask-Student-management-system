@@ -2,86 +2,369 @@
 
 {% block content %}
 
-<div class="bg-white rounded-xl shadow p-6 mb-6">
+<!-- ================= WELCOME ================= -->
 
-    <h1 class="text-3xl font-bold">
-        👋 Welcome {{ user_name }}
-    </h1>
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-7 mb-6">
 
-    <p class="text-gray-500 mt-2">
-        Keep pushing forward with your placement prep
-    </p>
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-</div>
+        <div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <p class="text-sm font-medium text-blue-600 mb-1">
+                Student Life OS
+            </p>
 
-    <div class="bg-white rounded-xl shadow p-6">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+                👋 Welcome {{ user_name }}
+            </h1>
 
-        <p class="text-gray-500">
-            📅 Today's Date
-        </p>
+            <p class="text-gray-500 mt-2">
+                Stay consistent. Keep moving forward with your placement prep.
+            </p>
 
-        <h2 class="text-2xl font-bold text-blue-600 mt-2">
-            {{ current_date }}
-        </h2>
+        </div>
 
-    </div>
+        <div class="bg-blue-50 rounded-xl px-5 py-4">
 
-    <div class="bg-white rounded-xl shadow p-6">
+            <p class="text-sm text-gray-500">
+                Today's Date
+            </p>
 
-        <p class="text-gray-500">
-            🔥 Current Streak
-        </p>
+            <p class="text-xl font-bold text-blue-600 mt-1">
+                {{ current_date }}
+            </p>
 
-        <h2 class="text-2xl font-bold text-purple-600 mt-2">
-            {{ streak_count }} Days
-        </h2>
+        </div>
 
     </div>
 
 </div>
 
-<div class="bg-white rounded-xl shadow p-6 mb-6">
 
-    <h2 class="text-2xl font-bold mb-4">
-        🎯 Today's Focus
-    </h2>
+<!-- ================= QUICK STATS ================= -->
 
-    <ul class="space-y-2">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
 
-        <li>📚 Complete DSA Sheet</li>
 
-        <li>💻 Work on Student Life OS</li>
+    <!-- Study -->
 
-        <li>📖 SQL Revision</li>
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5
+                hover:shadow-md transition">
 
-        <li>🏃 Exercise 30 Minutes</li>
+        <div class="flex items-center justify-between">
 
-    </ul>
+            <div>
+
+                <p class="text-sm text-gray-500">
+                    Study
+                </p>
+
+                <p class="text-2xl font-bold text-gray-900 mt-2">
+                    {{ total_tasks }}
+                </p>
+
+                <p class="text-xs text-gray-400 mt-1">
+                    Total tasks
+                </p>
+
+            </div>
+
+            <div class="w-11 h-11 rounded-xl bg-blue-50
+                        flex items-center justify-center text-xl">
+
+                📚
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Completed -->
+
+    <div class="bg-green-50 rounded-2xl shadow-sm border border-green-100 p-5
+                hover:shadow-md transition">
+
+        <div class="flex items-center justify-between">
+
+            <div>
+
+                <p class="text-sm text-gray-600">
+                    Completed
+                </p>
+
+                <p class="text-2xl font-bold text-green-700 mt-2">
+                    {{ completed_tasks }}
+                </p>
+
+                <p class="text-xs text-green-600 mt-1">
+                    Tasks completed
+                </p>
+
+            </div>
+
+            <div class="w-11 h-11 rounded-xl bg-green-100
+                        flex items-center justify-center text-xl">
+
+                ✓
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Pending -->
+
+    <div class="bg-yellow-50 rounded-2xl shadow-sm border border-yellow-100 p-5
+                hover:shadow-md transition">
+
+        <div class="flex items-center justify-between">
+
+            <div>
+
+                <p class="text-sm text-gray-600">
+                    Pending
+                </p>
+
+                <p class="text-2xl font-bold text-yellow-700 mt-2">
+                    {{ pending_tasks }}
+                </p>
+
+                <p class="text-xs text-yellow-600 mt-1">
+                    Need attention
+                </p>
+
+            </div>
+
+            <div class="w-11 h-11 rounded-xl bg-yellow-100
+                        flex items-center justify-center text-xl">
+
+                ⏳
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Streak -->
+
+    <div class="bg-purple-50 rounded-2xl shadow-sm border border-purple-100 p-5
+                hover:shadow-md transition">
+
+        <div class="flex items-center justify-between">
+
+            <div>
+
+                <p class="text-sm text-gray-600">
+                    Current Streak
+                </p>
+
+                <p class="text-2xl font-bold text-purple-700 mt-2">
+                    {{ streak_count }}
+                </p>
+
+                <p class="text-xs text-purple-600 mt-1">
+                    Days 🔥
+                </p>
+
+            </div>
+
+            <div class="w-11 h-11 rounded-xl bg-purple-100
+                        flex items-center justify-center text-xl">
+
+                🔥
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
-<div class="bg-white rounded-xl shadow p-6 mb-6">
 
-    <h2 class="text-2xl font-bold mb-4">
-        ➕ Add Today's Task
-    </h2>
+<!-- ================= PROGRESS ================= -->
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+
+    <div class="flex items-center justify-between mb-3">
+
+        <div>
+
+            <h2 class="text-xl font-bold text-gray-900">
+                📊 Today's Progress
+            </h2>
+
+            <p class="text-sm text-gray-500 mt-1">
+                Keep completing your daily goals.
+            </p>
+
+        </div>
+
+        <span class="text-2xl font-bold text-blue-600">
+            {{ completion_rate }}%
+        </span>
+
+    </div>
+
+
+    <div class="w-full h-3 bg-gray-100 rounded-full overflow-hidden">
+
+        <div
+            class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all"
+            style="width: {{ completion_rate }}%;">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TODAY'S FOCUS ================= -->
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+
+    <div class="flex items-center justify-between mb-5">
+
+        <div>
+
+            <h2 class="text-2xl font-bold text-gray-900">
+                🎯 Today's Focus
+            </h2>
+
+            <p class="text-gray-500 text-sm mt-1">
+                A few things worth focusing on today.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+
+        <div class="flex items-center gap-3 p-4
+                    rounded-xl bg-blue-50
+                    border border-blue-100">
+
+            <span class="text-xl">
+                📚
+            </span>
+
+            <span class="font-medium text-gray-800">
+                Complete DSA Sheet
+            </span>
+
+        </div>
+
+
+        <div class="flex items-center gap-3 p-4
+                    rounded-xl bg-purple-50
+                    border border-purple-100">
+
+            <span class="text-xl">
+                💻
+            </span>
+
+            <span class="font-medium text-gray-800">
+                Work on Student Life OS
+            </span>
+
+        </div>
+
+
+        <div class="flex items-center gap-3 p-4
+                    rounded-xl bg-green-50
+                    border border-green-100">
+
+            <span class="text-xl">
+                📖
+            </span>
+
+            <span class="font-medium text-gray-800">
+                SQL Revision
+            </span>
+
+        </div>
+
+
+        <div class="flex items-center gap-3 p-4
+                    rounded-xl bg-orange-50
+                    border border-orange-100">
+
+            <span class="text-xl">
+                🏃
+            </span>
+
+            <span class="font-medium text-gray-800">
+                Exercise 30 Minutes
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ADD TASK ================= -->
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-6">
+
+    <div class="flex items-center gap-3 mb-5">
+
+        <div class="w-10 h-10 rounded-xl bg-blue-50
+                    flex items-center justify-center text-xl">
+
+            ➕
+
+        </div>
+
+        <div>
+
+            <h2 class="text-xl font-bold text-gray-900">
+                Add Today's Task
+            </h2>
+
+            <p class="text-sm text-gray-500">
+                Add something you want to accomplish today.
+            </p>
+
+        </div>
+
+    </div>
+
 
     <form method="POST">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 
             <input
                 type="text"
                 name="task_name"
                 placeholder="What's your task today?"
                 required
-                class="border rounded-lg p-3">
+                class="border border-gray-200 rounded-xl p-3.5
+                       outline-none
+                       focus:border-blue-500
+                       focus:ring-2
+                       focus:ring-blue-100">
+
 
             <select
                 name="category"
-                class="border rounded-lg p-3">
+                class="border border-gray-200 rounded-xl p-3.5
+                       outline-none
+                       focus:border-blue-500
+                       focus:ring-2
+                       focus:ring-blue-100">
 
                 <option>DSA</option>
                 <option>SQL</option>
@@ -94,9 +377,17 @@
 
             </select>
 
+
             <button
                 type="submit"
-                class="bg-blue-600 text-white rounded-lg p-3">
+                class="bg-blue-600
+                       hover:bg-blue-700
+                       text-white
+                       rounded-xl
+                       p-3.5
+                       font-semibold
+                       transition
+                       hover:-translate-y-0.5">
 
                 Add Task ✓
 
@@ -108,110 +399,216 @@
 
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
 
-    <div class="bg-white rounded-xl shadow p-6">
+<!-- ================= MODULES ================= -->
 
-        <p>Total Tasks</p>
+<div class="mb-6">
 
-        <h2 class="text-3xl font-bold">
-            {{ total_tasks }}
+    <div class="mb-5">
+
+        <h2 class="text-2xl font-bold text-gray-900">
+            Explore Your Dashboard
         </h2>
 
-    </div>
-
-    <div class="bg-green-100 rounded-xl shadow p-6">
-
-        <p>Completed</p>
-
-        <h2 class="text-3xl font-bold">
-            {{ completed_tasks }}
-        </h2>
-
-    </div>
-
-    <div class="bg-yellow-100 rounded-xl shadow p-6">
-
-        <p>Pending</p>
-
-        <h2 class="text-3xl font-bold">
-            {{ pending_tasks }}
-        </h2>
-
-    </div>
-
-    <div class="bg-blue-100 rounded-xl shadow p-6">
-
-        <p>Completion Rate</p>
-
-        <h2 class="text-3xl font-bold">
-            {{ completion_rate }}%
-        </h2>
-
-    </div>
-
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-
-    <a href="/placement_v2"
-       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
-
-        <h3 class="font-bold text-lg">
-            🏆 Placement Tracker
-        </h3>
-
-        <p class="text-gray-500 mt-2">
-            Track jobs and interviews
+        <p class="text-gray-500 text-sm mt-1">
+            Manage different areas of your student life.
         </p>
 
-    </a>
+    </div>
 
-    <a href="/habit_v2"
-       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
 
-        <h3 class="font-bold text-lg">
-            ✨ Habit Tracker
-        </h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
 
-        <p class="text-gray-500 mt-2">
-            Build consistency
-        </p>
 
-    </a>
+        <!-- Placement -->
+
+        <a href="/placement_v2"
+           class="group bg-white rounded-2xl shadow-sm
+                  border border-gray-100 p-5
+                  hover:shadow-lg hover:-translate-y-1
+                  transition">
+
+            <div class="flex items-center justify-between">
+
+                <div class="w-12 h-12 rounded-xl bg-yellow-50
+                            flex items-center justify-center text-2xl">
+
+                    🏆
+
+                </div>
+
+                <span class="text-gray-300
+                             group-hover:text-blue-500
+                             transition">
+
+                    →
+
+                </span>
+
+            </div>
+
+            <h3 class="font-bold text-lg mt-4">
+                Placement Tracker
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+                Track jobs and interviews.
+            </p>
+
+        </a>
+
+
+        <!-- Habit -->
+
+        <a href="/habit_v2"
+           class="group bg-white rounded-2xl shadow-sm
+                  border border-gray-100 p-5
+                  hover:shadow-lg hover:-translate-y-1
+                  transition">
+
+            <div class="flex items-center justify-between">
+
+                <div class="w-12 h-12 rounded-xl bg-purple-50
+                            flex items-center justify-center text-2xl">
+
+                    ✨
+
+                </div>
+
+                <span class="text-gray-300
+                             group-hover:text-purple-500
+                             transition">
+
+                    →
+
+                </span>
+
+            </div>
+
+            <h3 class="font-bold text-lg mt-4">
+                Habit Tracker
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+                Build consistency every day.
+            </p>
+
+        </a>
+
+
+        <!-- Fitness -->
+
         <a href="/fitness_v2"
-       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+           class="group bg-white rounded-2xl shadow-sm
+                  border border-gray-100 p-5
+                  hover:shadow-lg hover:-translate-y-1
+                  transition">
 
-        <h3 class="font-bold text-lg">
-            💪 Fitness Tracker
-        </h3>
+            <div class="flex items-center justify-between">
 
-        <p class="text-gray-500 mt-2">
-            Track health goals
-        </p>
+                <div class="w-12 h-12 rounded-xl bg-green-50
+                            flex items-center justify-center text-2xl">
 
-    </a>
+                    💪
 
-    <a href="/mood_v2"
-       class="bg-white rounded-xl shadow p-6 hover:shadow-lg">
+                </div>
 
-        <h3 class="font-bold text-lg">
-            😊 Mood Tracker
-        </h3>
+                <span class="text-gray-300
+                             group-hover:text-green-500
+                             transition">
 
-        <p class="text-gray-500 mt-2">
-            Monitor mental wellbeing
-        </p>
+                    →
 
-    </a>
+                </span>
+
+            </div>
+
+            <h3 class="font-bold text-lg mt-4">
+                Fitness Tracker
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+                Track your health goals.
+            </p>
+
+        </a>
+
+
+        <!-- Mood -->
+
+        <a href="/mood_v2"
+           class="group bg-white rounded-2xl shadow-sm
+                  border border-gray-100 p-5
+                  hover:shadow-lg hover:-translate-y-1
+                  transition">
+
+            <div class="flex items-center justify-between">
+
+                <div class="w-12 h-12 rounded-xl bg-pink-50
+                            flex items-center justify-center text-2xl">
+
+                    😊
+
+                </div>
+
+                <span class="text-gray-300
+                             group-hover:text-pink-500
+                             transition">
+
+                    →
+
+                </span>
+
+            </div>
+
+            <h3 class="font-bold text-lg mt-4">
+                Mood Tracker
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+                Monitor your wellbeing.
+            </p>
+
+        </a>
+
+    </div>
 
 </div>
 
-<div class="bg-white rounded-xl shadow p-6">
 
-    <h2 class="text-2xl font-bold mb-4">
-        📋 Today's Tasks
-    </h2>
+<!-- ================= TODAY'S TASKS ================= -->
+
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-8">
+
+    <div class="flex flex-col md:flex-row
+                md:items-center md:justify-between
+                gap-3 mb-5">
+
+        <div>
+
+            <h2 class="text-2xl font-bold text-gray-900">
+                📋 Today's Tasks
+            </h2>
+
+            <p class="text-sm text-gray-500 mt-1">
+                Track what you need to complete today.
+            </p>
+
+        </div>
+
+        {% if tasks %}
+
+        <span class="text-sm bg-blue-50 text-blue-600
+                     px-3 py-1.5 rounded-full font-medium">
+
+            {{ tasks|length }} task{% if tasks|length != 1 %}s{% endif %}
+
+        </span>
+
+        {% endif %}
+
+    </div>
+
 
     {% if tasks %}
 
@@ -221,69 +618,112 @@
 
             <thead>
 
-                <tr class="border-b">
+                <tr class="border-b border-gray-100">
 
-                    <th class="text-left p-3">ID</th>
-                    <th class="text-left p-3">Task</th>
-                    <th class="text-left p-3">Category</th>
-                    <th class="text-left p-3">Status</th>
-                    <th class="text-left p-3">Actions</th>
+                    <th class="text-left p-3 text-sm text-gray-500">
+                        ID
+                    </th>
+
+                    <th class="text-left p-3 text-sm text-gray-500">
+                        Task
+                    </th>
+
+                    <th class="text-left p-3 text-sm text-gray-500">
+                        Category
+                    </th>
+
+                    <th class="text-left p-3 text-sm text-gray-500">
+                        Status
+                    </th>
+
+                    <th class="text-left p-3 text-sm text-gray-500">
+                        Actions
+                    </th>
 
                 </tr>
 
             </thead>
 
+
             <tbody>
 
                 {% for task in tasks %}
 
-                <tr class="border-b">
+                <tr class="border-b border-gray-50
+                           hover:bg-gray-50 transition">
 
-                    <td class="p-3">
+                    <td class="p-3 text-sm text-gray-500">
                         #{{ task[0] }}
                     </td>
 
-                    <td class="p-3">
+                    <td class="p-3 font-medium text-gray-800">
                         {{ task[1] }}
                     </td>
 
                     <td class="p-3">
-                        {{ task[2] }}
+
+                        <span class="px-3 py-1
+                                     rounded-full
+                                     bg-blue-50
+                                     text-blue-600
+                                     text-xs
+                                     font-medium">
+
+                            {{ task[2] }}
+
+                        </span>
+
                     </td>
 
                     <td class="p-3">
 
                         {% if task[3] == "Completed" %}
 
-                        <span class="text-green-600 font-semibold">
+                        <span class="text-green-600
+                                     font-semibold text-sm">
+
                             ✓ Completed
+
                         </span>
 
                         {% else %}
 
-                        <span class="text-yellow-600 font-semibold">
+                        <span class="text-yellow-600
+                                     font-semibold text-sm">
+
                             ⏳ Pending
+
                         </span>
 
                         {% endif %}
 
                     </td>
 
-                    <td class="p-3">
+                    <td class="p-3 text-sm">
+
+                        {% if task[3] != "Completed" %}
 
                         <a
                             href="/complete/{{ task[0] }}"
-                            class="text-green-600 font-semibold">
+                            class="text-green-600
+                                   font-semibold
+                                   hover:text-green-700">
 
                             Complete
 
                         </a>
 
-                        |
+                        <span class="text-gray-300 mx-2">
+                            |
+                        </span>
+
+                        {% endif %}
 
                         <a
                             href="/delete_task/{{ task[0] }}"
-                            class="text-red-600 font-semibold">
+                            class="text-red-500
+                                   font-semibold
+                                   hover:text-red-600">
 
                             Delete
 
@@ -301,14 +741,28 @@
 
     </div>
 
+
     {% else %}
 
-    <p class="text-gray-500">
-        No tasks yet. Add one to get started 🚀
-    </p>
+    <div class="text-center py-10">
+
+        <div class="text-4xl mb-3">
+            📋
+        </div>
+
+        <p class="text-gray-500">
+            No tasks yet.
+        </p>
+
+        <p class="text-sm text-gray-400 mt-1">
+            Add your first task above to get started.
+        </p>
+
+    </div>
 
     {% endif %}
 
 </div>
+
 
 {% endblock %}

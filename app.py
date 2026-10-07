@@ -165,7 +165,7 @@ def login():
             session["user_name"] = user[1]
             session["user_email"] = user[2]
 
-            return redirect("/dashboard")
+            return redirect("/dashboard_v2")
 
     return render_template("login.html")
 
@@ -252,7 +252,7 @@ def dashboard():
     conn.close()
 
     return render_template(
-        "dashboard.html",
+        "dashboard_v2.html",
         tasks=tasks,
         total_tasks=total_tasks,
         completed_tasks=completed_tasks,
